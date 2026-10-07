@@ -72,7 +72,7 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   });
 });
 
-app.listen(PORT, () => {
+app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`=========================================`);
   console.log(`🚀 SaaSquatch Deal Engine Backend Running`);
   console.log(`📡 URL: http://localhost:${PORT}`);
