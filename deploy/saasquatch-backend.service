@@ -1,0 +1,20 @@
+[Unit]
+Description=SaaSquatch DealEngine Node.js Backend Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/var/www/saasquatch/backend
+Environment=NODE_ENV=production
+Environment=PORT=5001
+Environment=DATABASE_PATH=/var/www/saasquatch/data/saasquatch.db
+ExecStart=/usr/bin/node dist/server.js
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=saasquatch-backend
+
+[Install]
+WantedBy=multi-user.target

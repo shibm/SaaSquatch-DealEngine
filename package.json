@@ -1,0 +1,17 @@
+{
+  "name": "saasquatch-dealengine",
+  "version": "1.0.0",
+  "description": "AI-Powered ETA & PE Deal Sourcing Platform for Caprae Capital",
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "seed": "npm --prefix backend run seed",
+    "start:backend": "npm --prefix backend run start",
+    "start:frontend": "npm --prefix frontend run preview",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev"
+  },
+  "keywords": ["leadgen", "scraping", "search-funds", "eta", "private-equity", "caprae-capital"],
+  "author": "",
+  "license": "MIT"
+}
