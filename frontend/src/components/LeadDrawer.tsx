@@ -19,16 +19,26 @@ export const LeadDrawer: React.FC<LeadDrawerProps> = ({ lead, onClose, onStatusC
   const [senderName, setSenderName] = useState('Acquisitions Principal');
   const [firmName, setFirmName] = useState('Caprae Capital Partners');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState<LeadStatus>(lead?.status || 'new');
   const [currentLetter, setCurrentLetter] = useState(lead?.acquisitionLetter || '');
+
+  React.useEffect(() => {
+    if (lead) {
+      setCurrentStatus(lead.status);
+      setCurrentLetter(lead.acquisitionLetter);
+    }
+  }, [lead?.id, lead?.status, lead?.acquisitionLetter]);
 
   if (!lead) return null;
 
   const handleStatusSelect = async (newStatus: LeadStatus) => {
+    setCurrentStatus(newStatus);
     try {
       await updateLeadStatus(lead.id, newStatus);
       onStatusChange(lead.id, newStatus);
     } catch (err) {
-      console.error(err);
+      if (lead) setCurrentStatus(lead.status);
+      console.error('Failed to update status:', err);
     }
   };
 
@@ -85,9 +95,9 @@ export const LeadDrawer: React.FC<LeadDrawerProps> = ({ lead, onClose, onStatusC
 
           <div className="flex items-center gap-2">
             <select
-              value={lead.status}
+              value={currentStatus}
               onChange={(e) => handleStatusSelect(e.target.value as LeadStatus)}
-              className="bg-white/5 border border-white/10 text-xs text-white rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-teal-500"
+              className="bg-white/5 border border-white/10 text-xs text-white rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-teal-500 cursor-pointer"
             >
               <option value="new" className="bg-[#0b1120]">Status: New</option>
               <option value="reviewed" className="bg-[#0b1120]">Status: Reviewed</option>

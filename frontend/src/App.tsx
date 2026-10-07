@@ -427,7 +427,7 @@ export function App() {
         lead={selectedLead}
         onClose={() => setSelectedLead(null)}
         onStatusChange={(id, newStatus) => {
-          setLeads(prev => prev.map(l => l.id === id ? { ...l, status: newStatus } : l));
+          handleStatusUpdate(id, newStatus);
         }}
       />
 

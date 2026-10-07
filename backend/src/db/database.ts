@@ -192,6 +192,11 @@ export function getLeadByDomain(domain: string): Lead | null {
 }
 
 export function upsertLead(lead: Lead): Lead {
+  const existing = getLeadByDomain(lead.domain);
+  const finalId = existing ? existing.id : lead.id;
+  const finalStatus = existing ? existing.status : lead.status;
+  const leadToSave: Lead = { ...lead, id: finalId, status: finalStatus };
+
   const stmt = db.prepare(`
     INSERT INTO leads (
       id, name, domain, website, description, industry, location, country,
@@ -229,37 +234,37 @@ export function upsertLead(lead: Lead): Lead {
   `);
 
   stmt.run(
-    lead.id,
-    lead.name,
-    lead.domain.toLowerCase(),
-    lead.website,
-    lead.description,
-    lead.industry,
-    lead.location,
-    lead.country,
-    lead.foundedYear,
-    lead.employeeCount,
-    lead.estimatedRevenue,
-    lead.estimatedEbitda,
-    lead.ownershipType,
-    lead.successionRisk,
-    lead.etaScore,
-    JSON.stringify(lead.etaScoreBreakdown),
-    JSON.stringify(lead.contacts),
-    JSON.stringify(lead.technologies),
-    lead.dealThesis,
-    lead.acquisitionLetter,
-    lead.status,
-    lead.scrapedAt,
-    lead.lastEnrichedAt
+    leadToSave.id,
+    leadToSave.name,
+    leadToSave.domain.toLowerCase(),
+    leadToSave.website,
+    leadToSave.description,
+    leadToSave.industry,
+    leadToSave.location,
+    leadToSave.country,
+    leadToSave.foundedYear,
+    leadToSave.employeeCount,
+    leadToSave.estimatedRevenue,
+    leadToSave.estimatedEbitda,
+    leadToSave.ownershipType,
+    leadToSave.successionRisk,
+    leadToSave.etaScore,
+    JSON.stringify(leadToSave.etaScoreBreakdown),
+    JSON.stringify(leadToSave.contacts),
+    JSON.stringify(leadToSave.technologies),
+    leadToSave.dealThesis,
+    leadToSave.acquisitionLetter,
+    leadToSave.status,
+    leadToSave.scrapedAt,
+    leadToSave.lastEnrichedAt
   );
 
-  return lead;
+  return leadToSave;
 }
 
 export function updateLeadStatus(id: string, status: LeadStatus): boolean {
-  const stmt = db.prepare(`UPDATE leads SET status = ? WHERE id = ?`);
-  const result = stmt.run(status, id);
+  const stmt = db.prepare(`UPDATE leads SET status = ? WHERE id = ? OR domain = ?`);
+  const result = stmt.run(status, id, id.toLowerCase());
   return result.changes > 0;
 }
 
