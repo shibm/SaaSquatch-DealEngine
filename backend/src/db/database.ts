@@ -314,3 +314,4 @@ export function setCachedScrape(domain: string, rawData: ScrapedRawData, ttlHour
   `);
   stmt.run(domain.toLowerCase(), JSON.stringify(rawData), createdAt, expiresAt);
 }
+

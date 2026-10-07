@@ -239,3 +239,4 @@ export const ScrapeModal: React.FC<ScrapeModalProps> = ({
     </div>
   );
 };
+

@@ -53,3 +53,4 @@ echo "Backend Status: sudo systemctl status saasquatch-backend"
 echo "Backend Logs: journalctl -u saasquatch-backend -f"
 echo "To attach SSL Certificate: sudo certbot --nginx -d your-domain.com"
 echo "=============================================================================="
+

@@ -196,3 +196,4 @@ Caprae Capital is transforming Entrepreneurship Through Acquisition (ETA) by ins
 | `POST` | `/api/leads/:id/generate-outreach` | Customize M&A founder outreach letter |
 | `POST` | `/api/leads/export` | Export filtered deals to CSV |
 | `DELETE`| `/api/leads/:id` | Remove company from pipeline |
+

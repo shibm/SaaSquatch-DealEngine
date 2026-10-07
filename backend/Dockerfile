@@ -20,3 +20,4 @@ RUN mkdir -p /app/data
 
 EXPOSE 5001
 CMD ["node", "dist/server.js"]
+

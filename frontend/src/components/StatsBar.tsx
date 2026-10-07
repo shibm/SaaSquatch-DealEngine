@@ -70,3 +70,4 @@ export const StatsBar: React.FC<StatsBarProps> = ({ stats }) => {
     </div>
   );
 };
+

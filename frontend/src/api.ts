@@ -87,3 +87,4 @@ export async function customizeOutreach(id: string, senderName: string, firmName
   const data = await res.json();
   return data.acquisitionLetter;
 }
+

@@ -59,3 +59,4 @@ export interface Stats {
   contactedCount: number;
   avgEtaScore: number;
 }
+

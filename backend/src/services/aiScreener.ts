@@ -302,3 +302,4 @@ https://www.capraecapitalpartners.com`;
 }
 
 export const aiScreenerService = new AIScreenerService();
+

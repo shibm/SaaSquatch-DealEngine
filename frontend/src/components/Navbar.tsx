@@ -59,3 +59,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenScrape, onExport, isExport
     </header>
   );
 };
+

@@ -18,3 +18,4 @@ SyslogIdentifier=saasquatch-backend
 
 [Install]
 WantedBy=multi-user.target
+
