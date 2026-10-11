@@ -3,9 +3,11 @@
 > **Engineered for Caprae Capital Partners**  
 > An Operator-First Sourcing & Succession Intelligence Engine for Lower-Middle-Market Acquisitions and Search Funds.
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717.svg?logo=github)](https://github.com/shibm/SaaSquatch-DealEngine)
 [![Node.js Version](https://img.shields.io/badge/Node.js-v22+-green.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-cyan.svg)](https://react.dev/)
+[![Tests](https://img.shields.io/badge/Tests-9%20Passed%20%2F%20100%25-brightgreen.svg)](https://github.com/shibm/SaaSquatch-DealEngine)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
 [![Ubuntu Deployment](https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04%20LTS-E95420.svg)](https://ubuntu.com/)
 
@@ -105,6 +107,14 @@ npm run dev:frontend
 ```
 
 Now open **http://localhost:3000** in your browser.
+
+*(Or run both simultaneously in a single terminal with: `npm run dev`)*
+
+### Step 4: Run Automated Tests
+```bash
+npm test
+```
+*(Executes the automated test suite verifying database integrity, AI ETA evaluation, and streaming CSV export).*
 
 ---
 
